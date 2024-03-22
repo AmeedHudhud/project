@@ -61,8 +61,8 @@ class Visits extends Controller
             'correspondence_material_checks_notes' => 'nullable|string',
             'business_audit_requests' => 'required|in:exist,not exist',
             'business_audit_requests_notes' => 'nullable|string',
-            'correspondence' => 'required|in:exist,not exist',
-            'correspondence_notes' => 'nullable|string',
+            'correspondencee' => 'required|in:exist,not exist',
+            'correspondencee_notes' => 'nullable|string',
             'plans_reports_notes' => 'nullable|string',
             'supervisory_staff_room_preparation' => 'required|in:exist,not exist',
             'engineer_desk_chair_preparation' => 'required|in:exist,not exist',
@@ -75,7 +75,7 @@ class Visits extends Controller
             'engineering_examinations_copy' => 'required|in:exist,not exist',
             'casting_permissions_copy' => 'required|in:exist,not exist',
             'status' => 'nullable|string',
-            'correspondence_id' => 'nullable|integer'
+            'correspondence_id' => 'nullable|integer|exists:correspondences,id'
         ]);
 
         $visit = visit::create($request->all());
@@ -174,6 +174,8 @@ class Visits extends Controller
     {
         $visit_number = $request->query('visit_number', null);
         $visit = visit::with('project')->where('visit_number', $visit_number)->first();
+        $cor=visit::with('correspondence')->where('visit_number',1 )->first();
+        // return $cor->correspondence->message;
         // $x = $visit->project->project_name;
 
         if ($visit) {
@@ -228,8 +230,8 @@ class Visits extends Controller
                 'correspondence_material_checks_notes' => $visit->correspondence_material_checks_notes,
                 'business_audit_requests' => $visit->business_audit_requests,
                 'business_audit_requests_notes' => $visit->business_audit_requests_notes,
-                'correspondence' => $visit->correspondence,
-                'correspondence_notes' => $visit->correspondence_notes,
+                'correspondencee' => $visit->correspondencee,
+                'correspondencee_notes' => $visit->correspondencee_notes,
                 'plans_reports_notes' => $visit->plans_reports_notes,
                 'supervisory_staff_room_preparation' => $visit->supervisory_staff_room_preparation,
                 'engineer_desk_chair_preparation' => $visit->engineer_desk_chair_preparation,
@@ -241,8 +243,8 @@ class Visits extends Controller
                 'project_insurance_copy' => $visit->project_insurance_copy,
                 'engineering_examinations_copy' => $visit->engineering_examinations_copy,
                 'casting_permissions_copy' => $visit->casting_permissions_copy,
-                'status' => $visit->status
-                // 'correspondence_id' => $visit->
+                'status' => $visit->status,
+                'correspondence_message' => $cor->correspondence->message
             ];
             return response()->json(['visit' => $data], 200);
         } else {
@@ -316,7 +318,6 @@ class Visits extends Controller
             return response()->json(['message' => 'Visit not found'], 404);
         }
     }
-
     protected function update(Request $request,string $visit_number){
         $visit=visit::where('visit_number',$visit_number)->first();
         // return $visit;
@@ -373,8 +374,8 @@ class Visits extends Controller
                 'correspondence_material_checks_notes' => 'sometimes|nullable|string',
                 'business_audit_requests' => 'sometimes|required|in:exist,not exist',
                 'business_audit_requests_notes' => 'sometimes|nullable|string',
-                'correspondence' => 'sometimes|required|in:exist,not exist',
-                'correspondence_notes' => 'sometimes|nullable|string',
+                'correspondencee' => 'sometimes|required|in:exist,not exist',
+                'correspondencee_notes' => 'sometimes|nullable|string',
                 'plans_reports_notes' => 'sometimes|nullable|string',
                 'supervisory_staff_room_preparation' => 'sometimes|required|in:exist,not exist',
                 'engineer_desk_chair_preparation' => 'sometimes|required|in:exist,not exist',
@@ -387,7 +388,7 @@ class Visits extends Controller
                 'engineering_examinations_copy' => 'sometimes|required|in:exist,not exist',
                 'casting_permissions_copy' => 'sometimes|required|in:exist,not exist',
                 'status' => 'sometimes|nullable|string',
-                'correspondence_id' => 'sometimes|nullable|integer'
+                'correspondence_id' => 'sometimes|nullable|integer|exists:correspondences,id'
             ]);
 
             $visit->update($request->all());

@@ -64,8 +64,8 @@ return new class extends Migration
             $table->text('correspondence_material_checks_notes')->nullable();
             $table->enum('business_audit_requests', ['exist', 'not exist']);
             $table->text('business_audit_requests_notes')->nullable();
-            $table->enum('correspondence', ['exist', 'not exist']);
-            $table->text('correspondence_notes')->nullable();
+            $table->enum('correspondencee', ['exist', 'not exist']);
+            $table->text('correspondencee_notes')->nullable();
             $table->text('plans_reports_notes')->nullable();
             $table->enum('supervisory_staff_room_preparation', ['exist', 'not exist']);
             $table->enum('engineer_desk_chair_preparation', ['exist', 'not exist']);

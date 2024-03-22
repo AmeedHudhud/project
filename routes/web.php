@@ -96,7 +96,7 @@ Route::get('/', function () {
     // return $visit;
 
     $cor=visit::with('correspondence')->where('visit_number',1 )->first();
-    return $cor;
+    return $cor->correspondence->message;
 
 
 });
