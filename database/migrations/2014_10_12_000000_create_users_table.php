@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->primary();
             $table->string('password');
-            $table->timestamp('date_of_registration')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->enum('gender', ['Male', 'Female']);
             $table->string('governorate');
             $table->string('mobile_number');

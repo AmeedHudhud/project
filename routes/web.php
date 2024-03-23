@@ -95,8 +95,11 @@ Route::get('/', function () {
     // $visit = Visit::where('visit_number', 2)->first();
     // return $visit;
 
-    $cor=visit::with('correspondence')->where('visit_number',1 )->first();
-    return $cor->correspondence->message;
+    // $cor=visit::with('correspondence')->where('visit_number',1 )->first();
+    // return $cor->correspondence->message;
+
+    $visits = Visit::with('correspondence')->get();
+    return $visits;
 
 
 });

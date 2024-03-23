@@ -12,11 +12,10 @@ class Projects extends Controller
     //     return Project::all();
     //     // return Project::paginate();
     // }
-    public function allProjects()
+    public function getAllProjects()
     {
         $projects = Project::with('contractor_enginner', 'contractor')->get();
 
-        // Transform the projects data to include engineer and contractor names
         $transformedProjects = $projects->map(function ($project) {
             return [
                 'project_number' => $project->project_number,
@@ -36,19 +35,21 @@ class Projects extends Controller
 
         return response()->json(['projects' => $transformedProjects], 200);
     }
-    public function projectStatus(Request $request)
+    //getProjectsByStatus
+    public function getProjectsByStatus(Request $request)
     {
-        // $project_status = $request->query('project_status', null);
-        // return Project::where('project_status', $project_status)->get();
+        $project_status = $request->query('project_status', null);
+        return Project::where('project_status', $project_status)->get();
+
         // $limit=$request->query('limit',10);
         // return Project::where('project_status', $project_status)->paginate($limit);
 
-
-        $project_status = $request->query('project_status', null);
-        $count = Project::where('project_status', $project_status)->count();
-        return response()->json(['count' => $count], 200);
+        //number
+        // $project_status = $request->query('project_status', null);
+        // $count = Project::where('project_status', $project_status)->count();
+        // return response()->json(['count' => $count], 200);
     }
-    public function projectNumber(Request $request)
+    public function getProjectsByNumber(Request $request)
     {
         $project_number = $request->query('project_number', null);
         $project = Project::with('contractor_enginner')->where('project_number', $project_number)->first();
@@ -92,7 +93,7 @@ class Projects extends Controller
 
         $project = Project::create($request->all());
         if ($project) {
-            return response()->json(['message' => 'Project created successfully', 'project' => $project], 201);
+            return response()->json(['message' => 'Project created successfully'], 201);
         } else {
             return response()->json(['error' => 'Failed to create project'], 500);
         }
