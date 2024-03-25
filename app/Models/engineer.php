@@ -10,7 +10,8 @@ class engineer extends Model
     use HasFactory;
 
     public $timestamps = false;
-
+    protected $guarded=[];
+    
     protected $primaryKey = 'engineer_number'; // Assuming 'engineer_number' is the primary key
 
     public function specialization()

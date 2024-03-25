@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Engineers;
 use App\Http\Controllers\ProjectAPI;
 use App\Http\Controllers\Projects;
 use App\Http\Controllers\Users;
@@ -48,4 +49,7 @@ Route::delete('/visit/delete',[Visits::class,'deleteVisitByVisitAndProjectNumber
 
 Route::post('/user/create',[Users::class,'createUser']);
 Route::post('/login',[Users::class,'login']);
-Route::put('/user/update/{email}',[Users::class,'update']);
+
+
+Route::post('/engineer/create',[Engineers::class,'createEngineer']);
+
