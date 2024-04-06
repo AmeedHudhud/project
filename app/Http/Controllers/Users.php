@@ -44,10 +44,33 @@ class Users extends Controller
     }
     public function update(Request $request, $email)
     {
+        $user=User::where('email',$email)->first();
 
+        if($user){
+            $request->validate([
+                'name' => 'sometimes|required|string',
+                'email' => 'sometimes|required|email|unique:users',
+                'password' => 'sometimes|required|string|min:8',
+                'gender' => 'sometimes|required|in:male,female',
+                'governorate' => 'sometimes|required|string',
+                'mobile_number' => 'sometimes|required|string',
+                'date_of_birth' => 'sometimes|required|date',
+            ]);
+            $user->update($request->all());
+            return $user;
+        }else{
+            return response()->json(['message' => 'User not found'], 404);
+        }
     }
     public function delete(Request $request, $email)
     {
+        $user=User::where('email',$email)->first();
+        // $user = User::where('email', $email)->first();
 
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+        $user->delete();
+        return response()->json(['message' => 'User deleted successfully'],200);
     }
 }

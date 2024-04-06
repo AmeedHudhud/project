@@ -49,7 +49,12 @@ Route::delete('/visit/delete',[Visits::class,'deleteVisitByVisitAndProjectNumber
 
 Route::post('/user/create',[Users::class,'createUser']);
 Route::post('/login',[Users::class,'login']);
+Route::delete('/user/delete/{email}',[Users::class,'delete']);
+Route::put('/user/update/{email}',[Users::class,'update']);
 
 
-Route::post('/engineer/create',[Engineers::class,'createEngineer']);
+Route::get('/engineer',[Engineers::class,'index']);
+Route::post('/engineer/create',[Engineers::class,'create']);
+Route::put('/engineer/update/{engineer_number}',[Engineers::class,'update']);
+Route::delete('/engineer/delete/{engineer_number}',[Engineers::class,'delete']);
 
