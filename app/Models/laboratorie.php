@@ -9,10 +9,11 @@ class laboratorie extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $guarded=[];
 
-    protected $casts = [
-        'Laboratory_name'=>'string'
-    ];
+    // protected $casts = [
+    //     'Laboratory_name'=>'string'
+    // ];
     protected $primaryKey = 'Laboratory_name'; // Assuming 'Laboratory_name' is the primary key
 
     public function projects()

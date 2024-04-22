@@ -16,10 +16,15 @@ return new class extends Migration
             // $table->timestamps();
             $table->integer('number_of_fines');
             $table->string('project_number');
-            $table->unsignedInteger('office_classification');
+            $table->integer('office_classification');
 
-            $table->primary(['project_number', 'office_classification']);
-            $table->unique(['project_number', 'office_classification']);
+           // Define both columns as primary keys
+    $table->primary(['number_of_fines','project_number', 'office_classification']);
+
+    // Define foreign key constraints for both columns
+    $table->foreign('project_number')->references('project_number')->on('projects');
+    $table->foreign('office_classification')->references('office_classification')->on('supervising_contracting_offices');
+            // $table->unique(['project_number', 'office_classification']);
 
         });
     }

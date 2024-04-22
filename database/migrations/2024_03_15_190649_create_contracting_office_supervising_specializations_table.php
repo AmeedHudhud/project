@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->string('project_number');
             $table->string('specialization_name');
-            $table->unsignedInteger('office_classification');
+            $table->integer('office_classification');
 
             $table->primary(['project_number', 'specialization_name']);
             $table->unique(['project_number', 'specialization_name', 'office_classification'], 'custom_unique_constraint_name');

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             // $table->integer('id')->primary();
             $table->string('Contractor_name');
-            $table->enum('Building classification',['first_class','second_class','third_class','fourth_class','fifty_class','Unclassified',]);
+            $table->enum('Building_classification',['first_class','second_class','third_class','fourth_class','fifty_class','Unclassified',]);
         });
     }
 

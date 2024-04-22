@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('Violation_number'); // Assuming 'Violation number' is a string
             $table->enum('Response', ['Answered', 'Not answered'])->default('Not answered');
             $table->string('project_number');
-            $table->unsignedInteger('office_classification');
+            $table->integer('office_classification');
 
             $table->primary(['Violation_number', 'project_number','office_classification']);
             // $table->unique(['Violation_number', 'project_number','office_classification']);

@@ -53,6 +53,8 @@ return new class extends Migration
             $table->foreign('specialization_name', 'coas_specialization_name_fk')->references('specialization_name')->on('specialties');
             $table->foreign('office_classification', 'coas_office_classification_fk')->references('office_classification')->on('supervising_contracting_offices');
         });
+        // Schema::table('fines', function (Blueprint $table) {
+        // });
         Schema::table('visits', function (Blueprint $table) {
             $table->foreign('project_number')->references('project_number')->on('projects');
             // $table->foreign('specialization_name', 'coas_specialization_name_fk')->references('specialization_name')->on('specialties');

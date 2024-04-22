@@ -16,7 +16,6 @@ class Engineers extends Controller
         }else{
             return response()->json(['message' => 'Engineer not found'], 404);
         }
-
     }
     protected function create(Request $request)
     {
@@ -28,8 +27,8 @@ class Engineers extends Controller
 
         ]);
 
-        $project = engineer::create($request->all());
-        if ($project) {
+        $engineer = engineer::create($request->all());
+        if ($engineer) {
             return response()->json(['message' => 'Engineer added successfully'], 201);
         } else {
             return response()->json(['error' => 'Error in addition'], 500);
@@ -50,7 +49,6 @@ class Engineers extends Controller
         }else{
             return response()->json(['message' => 'Engineer not found'], 404);
         }
-
     }
     protected function delete(Request $request, $engineer_number){
         $engineer = engineer::where('engineer_number',$engineer_number)->first();

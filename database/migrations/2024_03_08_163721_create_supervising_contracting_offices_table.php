@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('supervising_contracting_offices', function (Blueprint $table) {
             // $table->id();
             $table->string('office_name');
-            $table->unsignedInteger('office_classification')->primary();
+            $table->integer('office_classification')->primary();
         });
     }
 

@@ -9,6 +9,7 @@ class specialtie extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $guarded=[];
     protected $casts = [
         'specialization_name'=>'string'
     ];
