@@ -32,6 +32,7 @@ return new class extends Migration
             $table->foreign('project_number')->references('project_number')->on('projects');
             $table->foreign('office_classification')->references('office_classification')->on('supervising_contracting_offices');
         });
+
         Schema::table('contractor_presence', function (Blueprint $table) {
             $table->foreign('engineer_number')->references('engineer_number')->on('engineers');
             $table->foreign('project_number')->references('project_number')->on('projects');
@@ -42,6 +43,7 @@ return new class extends Migration
             $table->foreign('project_number')->references('project_number')->on('projects');
             $table->foreign('visiting_date')->references('visiting_date')->on('visits');
         });
+
         Schema::table('contracting_office_supervising_specializations', function (Blueprint $table) {
             $table->foreign('project_number', 'coss_project_number_fk')->references('project_number')->on('projects');
             $table->foreign('specialization_name', 'coss_specialization_name_fk')->references('specialization_name')->on('specialties');

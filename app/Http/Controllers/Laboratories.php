@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class Laboratories extends Controller
 {
-    protected function create(Request  $request) {
+    protected function create(Request $request)
+    {
         $request->validate([
             'Laboratory_name' => 'required|string|unique:laboratories',
             'Laboratory_address' => 'required|string'

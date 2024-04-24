@@ -9,6 +9,9 @@ class correspondence extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    protected $guarded = [];
+
     public function visits()
     {
         return $this->hasMany(Visit::class);

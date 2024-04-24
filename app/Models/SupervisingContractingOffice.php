@@ -9,6 +9,6 @@ class SupervisingContractingOffice extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $guarded=[];
+    protected $guarded = [];
     protected $primaryKey = 'office_classification';
 }

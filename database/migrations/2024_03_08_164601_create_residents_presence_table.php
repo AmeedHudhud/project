@@ -12,16 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('residents_presence', function (Blueprint $table) {
-            // $table->id();
+            $table->id();
             $table->enum('presence', ['exist', 'not exist']);
             $table->string('notes')->nullable();
-            $table->integer('engineer_number');//foreign key from enginner
-            $table->string('project_number');//foreign key form project
-            $table->dateTime('visiting_date');//foreign key from visit
+            $table->integer('engineer_number');//
+            $table->string('project_number');//
+            $table->dateTime('visiting_date');//
 
-            $table->primary(['engineer_number', 'visiting_date']);
-            $table->unique(['engineer_number', 'visiting_date']);
-
+            // $table->primary(['engineer_number', 'visiting_date']);
+            $table->unique(['visiting_date','engineer_number']);
         });
     }
 

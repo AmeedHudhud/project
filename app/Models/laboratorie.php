@@ -9,7 +9,7 @@ class laboratorie extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $guarded=[];
+    protected $guarded = [];
 
     // protected $casts = [
     //     'Laboratory_name'=>'string'

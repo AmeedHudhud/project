@@ -18,19 +18,21 @@ class Project extends Model
         'project_number' => 'string',
     ];
 
-    protected $fillable = [
-        'project_number',
-        'governorate',
-        'designing_engineering_office',
-        'project_name',
-        'widget',
-        'the_basin',
-        'region',
-        'spacae',
-        'Laboratory_name',
-        'contractor_engineer_number',
-        'contractor_id',
-    ];
+    // protected $fillable = [
+    //     'project_number',
+    //     'governorate',
+    //     'designing_engineering_office',
+    //     'project_name',
+    //     'widget',
+    //     'the_basin',
+    //     'region',
+    //     'spacae',
+    //     'Laboratory_name',
+    //     'contractor_engineer_number',
+    //     'contractor_id',
+    // ];
+    protected $guarded = [];
+
 
     public $timestamps = false;
     protected $primaryKey = 'project_number';

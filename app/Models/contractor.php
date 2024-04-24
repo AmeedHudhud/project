@@ -9,7 +9,7 @@ class contractor extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $guarded=[];
+    protected $guarded = [];
 
     protected $primaryKey = 'id'; // Assuming 'id' is the primary key
 

@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 
 class Engineers extends Controller
 {
-    protected function index(Request $request){
+    protected function index(Request $request)
+    {
         $engineer_number = $request->query('engineer_number', null);
 
         $engineer = engineer::where('engineer_number', $engineer_number)->first();
-        if($engineer){
+        if ($engineer) {
             return $engineer;
-        }else{
+        } else {
             return response()->json(['message' => 'Engineer not found'], 404);
         }
     }
@@ -35,9 +36,10 @@ class Engineers extends Controller
         }
     }
 
-    protected function update(Request $request, $engineer_number){
-        $engineer = engineer::where('engineer_number',$engineer_number)->first();
-        if($engineer){
+    protected function update(Request $request, $engineer_number)
+    {
+        $engineer = engineer::where('engineer_number', $engineer_number)->first();
+        if ($engineer) {
             $request->validate([
                 'engineer_number' => 'sometimes|required|integer|unique:engineers,engineer_number',
                 'engineer_name' => 'sometimes|required|string',
@@ -46,16 +48,17 @@ class Engineers extends Controller
             ]);
             $engineer->update($request->all());
             return $engineer;
-        }else{
+        } else {
             return response()->json(['message' => 'Engineer not found'], 404);
         }
     }
-    protected function delete(Request $request, $engineer_number){
-        $engineer = engineer::where('engineer_number',$engineer_number)->first();
-        if($engineer){
-            $engineer->delete( );
-            return response()->json(['message'=>"Deleted Successfully"]);
-        }else{
+    protected function delete(Request $request, $engineer_number)
+    {
+        $engineer = engineer::where('engineer_number', $engineer_number)->first();
+        if ($engineer) {
+            $engineer->delete();
+            return response()->json(['message' => "Deleted Successfully"]);
+        } else {
             return response()->json(['message' => 'Engineer not found'], 404);
         }
     }

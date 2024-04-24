@@ -12,21 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fines', function (Blueprint $table) {
-            // $table->id();
+            $table->id();
             // $table->timestamps();
             $table->integer('number_of_fines');
             $table->string('project_number');
             $table->integer('office_classification');
 
-           // Define both columns as primary keys
-    $table->primary(['number_of_fines','project_number', 'office_classification']);
+            // Define a shorter name for the unique constraint
+            $table->unique(['number_of_fines', 'project_number', 'office_classification'], 'fines_unique');
 
-    // Define foreign key constraints for both columns
-    $table->foreign('project_number')->references('project_number')->on('projects');
-    $table->foreign('office_classification')->references('office_classification')->on('supervising_contracting_offices');
-            // $table->unique(['project_number', 'office_classification']);
-
+            // Define foreign key constraints for both columns
+            $table->foreign('project_number')->references('project_number')->on('projects');
+            $table->foreign('office_classification')->references('office_classification')->on('supervising_contracting_offices');
         });
+
     }
 
     /**

@@ -172,82 +172,82 @@ class Visits extends Controller
     protected function getVisitByNumber(Request $request)
     {
         $visit_number = $request->query('visit_number', null);
-    $visit = Visit::with('project')->where('visit_number', $visit_number)->first();
-    $correspondence = Visit::with('correspondence')->where('visit_number', $visit_number)->first();
+        $visit = Visit::with('project')->where('visit_number', $visit_number)->first();
+        $correspondence = Visit::with('correspondence')->where('visit_number', $visit_number)->first();
 
-    if ($visit) {
-        $data = [
-            'visit_number' => $visit->visit_number,
-            'project_name' => $visit->project->project_name,
-            'visiting_day' => $visit->visiting_day,
-            'visiting_date' => $visit->visiting_date,
-            'first_name' => $visit->first_name,
-            'second_name' => $visit->second_name,
-            'third_name' => $visit->third_name,
-            'fourth_name' => $visit->fourth_name,
-            'municipality_surveys' => $visit->municipality_surveys,
-            'inspection_committee_reviews' => $visit->inspection_committee_reviews,
-            'labor_ministry_reports' => $visit->labor_ministry_reports,
-            'final_visit_notes' => $visit->final_visit_notes,
-            'supervision_engineer_timesheet' => $visit->supervision_engineer_timesheet,
-            'staff_general_comments' => $visit->staff_general_comments,
-            'project_state' => $visit->project_state,
-            'special_supervision_office' => $visit->special_supervision_office,
-            'special_supervision_office_notes' => $visit->special_supervision_office_notes,
-            'site_information_board' => $visit->site_information_board,
-            'site_information_board_notes' => $visit->site_information_board_notes,
-            'wc' => $visit->wc,
-            'bathroom_notes' => $visit->bathroom_notes,
-            'water_tank' => $visit->water_tank,
-            'water_tank_notes' => $visit->water_tank_notes,
-            'protection_fence' => $visit->protection_fence,
-            'protection_fence_notes' => $visit->protection_fence_notes,
-            'first_aid_cabinet' => $visit->first_aid_cabinet,
-            'first_aid_cabinet_notes' => $visit->first_aid_cabinet_notes,
-            'supervising_engineer_computer' => $visit->supervising_engineer_computer,
-            'supervising_engineer_computer_notes' => $visit->supervising_engineer_computer_notes,
-            'telephone' => $visit->telephone,
-            'telephone_notes' => $visit->telephone_notes,
-            'cell_phone' => $visit->cell_phone,
-            'cell_phone_notes' => $visit->cell_phone_notes,
-            'site_preparations_notes' => $visit->site_preparations_notes,
-            'architectural_plans' => $visit->architectural_plans,
-            'architectural_plans_notes' => $visit->architectural_plans_notes,
-            'construction_plans' => $visit->construction_plans,
-            'construction_plans_notes' => $visit->construction_plans_notes,
-            'electrical_diagrams' => $visit->electrical_diagrams,
-            'electrical_diagrams_notes' => $visit->electrical_diagrams_notes,
-            'mechanical_diagrams' => $visit->mechanical_diagrams,
-            'mechanical_diagrams_notes' => $visit->mechanical_diagrams_notes,
-            'daily_reports' => $visit->daily_reports,
-            'daily_reports_notes' => $visit->daily_reports_notes,
-            'meeting_minutes' => $visit->meeting_minutes,
-            'meeting_minutes_notes' => $visit->meeting_minutes_notes,
-            'correspondence_material_checks' => $visit->correspondence_material_checks,
-            'correspondence_material_checks_notes' => $visit->correspondence_material_checks_notes,
-            'business_audit_requests' => $visit->business_audit_requests,
-            'business_audit_requests_notes' => $visit->business_audit_requests_notes,
-            'correspondencee' => $visit->correspondencee,
-            'correspondencee_notes' => $visit->correspondencee_notes,
-            'plans_reports_notes' => $visit->plans_reports_notes,
-            'supervisory_staff_room_preparation' => $visit->supervisory_staff_room_preparation,
-            'engineer_desk_chair_preparation' => $visit->engineer_desk_chair_preparation,
-            'computer_provision' => $visit->computer_provision,
-            'filing_cabinet_provision' => $visit->filing_cabinet_provision,
-            'printer_availability' => $visit->printer_availability,
-            'sealed_licensed_plans_copy' => $visit->sealed_licensed_plans_copy,
-            'license_copy' => $visit->license_copy,
-            'project_insurance_copy' => $visit->project_insurance_copy,
-            'engineering_examinations_copy' => $visit->engineering_examinations_copy,
-            'casting_permissions_copy' => $visit->casting_permissions_copy,
-            'status' => $visit->status,
-            'correspondence_message' => $correspondence ? optional($correspondence->correspondence)->message : null,
-        ];
+        if ($visit) {
+            $data = [
+                'visit_number' => $visit->visit_number,
+                'project_name' => $visit->project->project_name,
+                'visiting_day' => $visit->visiting_day,
+                'visiting_date' => $visit->visiting_date,
+                'first_name' => $visit->first_name,
+                'second_name' => $visit->second_name,
+                'third_name' => $visit->third_name,
+                'fourth_name' => $visit->fourth_name,
+                'municipality_surveys' => $visit->municipality_surveys,
+                'inspection_committee_reviews' => $visit->inspection_committee_reviews,
+                'labor_ministry_reports' => $visit->labor_ministry_reports,
+                'final_visit_notes' => $visit->final_visit_notes,
+                'supervision_engineer_timesheet' => $visit->supervision_engineer_timesheet,
+                'staff_general_comments' => $visit->staff_general_comments,
+                'project_state' => $visit->project_state,
+                'special_supervision_office' => $visit->special_supervision_office,
+                'special_supervision_office_notes' => $visit->special_supervision_office_notes,
+                'site_information_board' => $visit->site_information_board,
+                'site_information_board_notes' => $visit->site_information_board_notes,
+                'wc' => $visit->wc,
+                'bathroom_notes' => $visit->bathroom_notes,
+                'water_tank' => $visit->water_tank,
+                'water_tank_notes' => $visit->water_tank_notes,
+                'protection_fence' => $visit->protection_fence,
+                'protection_fence_notes' => $visit->protection_fence_notes,
+                'first_aid_cabinet' => $visit->first_aid_cabinet,
+                'first_aid_cabinet_notes' => $visit->first_aid_cabinet_notes,
+                'supervising_engineer_computer' => $visit->supervising_engineer_computer,
+                'supervising_engineer_computer_notes' => $visit->supervising_engineer_computer_notes,
+                'telephone' => $visit->telephone,
+                'telephone_notes' => $visit->telephone_notes,
+                'cell_phone' => $visit->cell_phone,
+                'cell_phone_notes' => $visit->cell_phone_notes,
+                'site_preparations_notes' => $visit->site_preparations_notes,
+                'architectural_plans' => $visit->architectural_plans,
+                'architectural_plans_notes' => $visit->architectural_plans_notes,
+                'construction_plans' => $visit->construction_plans,
+                'construction_plans_notes' => $visit->construction_plans_notes,
+                'electrical_diagrams' => $visit->electrical_diagrams,
+                'electrical_diagrams_notes' => $visit->electrical_diagrams_notes,
+                'mechanical_diagrams' => $visit->mechanical_diagrams,
+                'mechanical_diagrams_notes' => $visit->mechanical_diagrams_notes,
+                'daily_reports' => $visit->daily_reports,
+                'daily_reports_notes' => $visit->daily_reports_notes,
+                'meeting_minutes' => $visit->meeting_minutes,
+                'meeting_minutes_notes' => $visit->meeting_minutes_notes,
+                'correspondence_material_checks' => $visit->correspondence_material_checks,
+                'correspondence_material_checks_notes' => $visit->correspondence_material_checks_notes,
+                'business_audit_requests' => $visit->business_audit_requests,
+                'business_audit_requests_notes' => $visit->business_audit_requests_notes,
+                'correspondencee' => $visit->correspondencee,
+                'correspondencee_notes' => $visit->correspondencee_notes,
+                'plans_reports_notes' => $visit->plans_reports_notes,
+                'supervisory_staff_room_preparation' => $visit->supervisory_staff_room_preparation,
+                'engineer_desk_chair_preparation' => $visit->engineer_desk_chair_preparation,
+                'computer_provision' => $visit->computer_provision,
+                'filing_cabinet_provision' => $visit->filing_cabinet_provision,
+                'printer_availability' => $visit->printer_availability,
+                'sealed_licensed_plans_copy' => $visit->sealed_licensed_plans_copy,
+                'license_copy' => $visit->license_copy,
+                'project_insurance_copy' => $visit->project_insurance_copy,
+                'engineering_examinations_copy' => $visit->engineering_examinations_copy,
+                'casting_permissions_copy' => $visit->casting_permissions_copy,
+                'status' => $visit->status,
+                'correspondence_message' => $correspondence ? optional($correspondence->correspondence)->message : null,
+            ];
 
-        return response()->json(['visit' => $data], 200);
-    } else {
-        return response()->json(['message' => 'Visit not found'], 404);
-    }
+            return response()->json(['visit' => $data], 200);
+        } else {
+            return response()->json(['message' => 'Visit not found'], 404);
+        }
     }
     protected function getVisitByProject(Request $request)
     {
@@ -266,7 +266,7 @@ class Visits extends Controller
             return response()->json(['message' => "Project not found"], 404);
         }
     }
-    protected function getVisitByVisitAndProjectNumber (Request $request)
+    protected function getVisitByVisitAndProjectNumber(Request $request)
     {
         $project_number = $request->query('project_number', null);
         $visit_number = $request->query('visit_number', null);
@@ -316,12 +316,12 @@ class Visits extends Controller
             return response()->json(['message' => 'Visit not found'], 404);
         }
     }
-    protected function update(Request $request,string $visit_number){
-        $visit=visit::where('visit_number',$visit_number)->first();
+    protected function update(Request $request, string $visit_number)
+    {
+        $visit = visit::where('visit_number', $visit_number)->first();
         // return $visit;
 
-        if($visit)
-        {
+        if ($visit) {
             $request->validate([
                 'visit_number' => 'sometimes|integer|unique:visits,visit_number',
                 'project_number' => 'sometimes|string|exists:projects,project_number',
@@ -391,9 +391,7 @@ class Visits extends Controller
 
             $visit->update($request->all());
             return $visit;
-        }
-        else
-        {
+        } else {
             return response()->json(['message' => 'visit not found'], 404);
         }
     }

@@ -10,8 +10,8 @@ class fine extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $guarded=[];
-    protected $primaryKey = 'office_classification';
+    protected $guarded = [];
+    // protected $primaryKey = 'office_classification';
     public $incrementing = false; // Since the keys are not auto-incrementing
 
 }

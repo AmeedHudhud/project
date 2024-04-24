@@ -108,10 +108,10 @@ class Projects extends Controller
             return response()->json(['message' => 'Project not found'], 404);
         }
     }
-    public function update(Request $request, string $project_id){
-        $project=Project::where('project_number',$project_id)->first();
-        if($project)
-        {
+    public function update(Request $request, string $project_id)
+    {
+        $project = Project::where('project_number', $project_id)->first();
+        if ($project) {
             // return $project;
             $request->validate([
                 'project_number' => 'sometimes|string|unique:projects,project_number',
@@ -129,9 +129,7 @@ class Projects extends Controller
             ]);
             $project->update($request->all());
             return $project;
-        }
-        else
-        {
+        } else {
             return response()->json(['message' => 'Project not found'], 404);
         }
     }

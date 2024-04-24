@@ -9,9 +9,9 @@ class specialtie extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $guarded=[];
+    protected $guarded = [];
     protected $casts = [
-        'specialization_name'=>'string'
+        'specialization_name' => 'string'
     ];
     protected $primaryKey = 'specialization_name'; // Assuming 'specialization_name' is the primary key
 

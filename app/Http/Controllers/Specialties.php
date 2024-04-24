@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class Specialties extends Controller
 {
-    protected function create(Request  $request) {
+    protected function create(Request $request)
+    {
         $request->validate([
             'specialization_name' => 'required|string|unique:specialties'
         ]);
@@ -19,5 +20,5 @@ class Specialties extends Controller
         }
     }
 
-    
+
 }

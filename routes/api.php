@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Contractors;
+use App\Http\Controllers\Correspondences;
 use App\Http\Controllers\Engineers;
 use App\Http\Controllers\Fines;
 use App\Http\Controllers\Laboratories;
@@ -84,4 +85,11 @@ Route::delete('/fines/delete/{officeClassification}',[Fines::class,'delete']);
 
 Route::post('/violation/create',[Violations::class,'create']);
 Route::get('/violation/{officeClassification}',[Violations::class,'index']);
-Route::delete('/violations/{officeClassification}/{violationNumber}/{project_number}', [Violations::class, 'delete']);
+Route::delete('/violations/delete/{officeClassification}/{violationNumber}', [Violations::class, 'delete']);
+Route::put('/violations/update/{officeClassification}/{violationNumber}', [Violations::class, 'update']);
+
+
+Route::post('/correspondence/create',[Correspondences::class,'create']);
+Route::get('/correspondence/{id}',[Correspondences::class,'index']);
+Route::delete('/correspondence/delete/{id}', [Correspondences::class, 'delete']);
+Route::put('/correspondence/update/{id}', [Correspondences::class, 'update']);
