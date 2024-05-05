@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContractingOfficeAssistantSpecializationController;
+use App\Http\Controllers\ContractingOfficeSupervisingSpecializationController;
+use App\Http\Controllers\ContractorPresenceController;
 use App\Http\Controllers\Contractors;
 use App\Http\Controllers\Correspondences;
 use App\Http\Controllers\Engineers;
@@ -7,11 +10,13 @@ use App\Http\Controllers\Fines;
 use App\Http\Controllers\Laboratories;
 use App\Http\Controllers\ProjectAPI;
 use App\Http\Controllers\Projects;
+use App\Http\Controllers\ResidentsPresenceController;
 use App\Http\Controllers\Specialties;
 use App\Http\Controllers\supervisingContractingOffices;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\Violations;
 use App\Http\Controllers\Visits;
+use App\Models\ContractingOfficeSupervisingSpecialization;
 use App\Models\visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -93,3 +98,15 @@ Route::post('/correspondence/create',[Correspondences::class,'create']);
 Route::get('/correspondence/{id}',[Correspondences::class,'index']);
 Route::delete('/correspondence/delete/{id}', [Correspondences::class, 'delete']);
 Route::put('/correspondence/update/{id}', [Correspondences::class, 'update']);
+
+Route::post('/residentspresence/create',[ResidentsPresenceController::class,'create']);
+Route::put('/residentspresence/update/{project_number}/{engineer_number}/{visiting_date}', [ResidentsPresenceController::class, 'update']);
+
+Route::post('/contractorpresence/create',[ContractorPresenceController::class,'create']);
+Route::put('/contractorpresence/update/{project_number}/{engineer_number}/{visiting_date}', [ContractorPresenceController::class, 'update']);
+
+
+Route::post('/supervisionspecialties/create',[ContractingOfficeSupervisingSpecializationController::class,'create']);
+Route::post('/assistantspecialties/create',[ContractingOfficeAssistantSpecializationController::class,'create']);
+
+

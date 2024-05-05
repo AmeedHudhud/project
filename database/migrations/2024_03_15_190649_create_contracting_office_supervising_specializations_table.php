@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contracting_office_supervising_specializations', function (Blueprint $table) {
-            // $table->id();
+            $table->id();
             // $table->timestamps();
 
             $table->string('project_number');
             $table->string('specialization_name');
             $table->integer('office_classification');
 
-            $table->primary(['project_number', 'specialization_name']);
-            $table->unique(['project_number', 'specialization_name', 'office_classification'], 'custom_unique_constraint_name');
+            // $table->primary(['project_number', 'specialization_name']);
+            $table->unique(['project_number', 'specialization_name'], 'custom_unique_constraint_name');
 
         });
     }

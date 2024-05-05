@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('contractor_presence', function (Blueprint $table) {
-            // $table->id();
+            $table->id();
             $table->enum('presence', ['exist', 'not exist']);
             $table->enum('the_sheet', ['exist', 'not exist']);
             $table->string('notes')->nullable();
@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('project_number');//foreign key form project
             $table->dateTime('visiting_date');//foreign key from visit
 
-            $table->primary(['engineer_number', 'visiting_date']);
+            // $table->primary(['engineer_number', 'visiting_date']);
             $table->unique(['engineer_number', 'visiting_date']);
         });
     }

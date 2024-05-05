@@ -11,7 +11,7 @@ class engineer extends Model
 
     public $timestamps = false;
     protected $guarded = [];
-    protected $incrementing = false;
+    // protected $incrementing = false;
     protected $primaryKey = 'engineer_number'; // Assuming 'engineer_number' is the primary key
 
     public function specialization()
